@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Select</title>
+</head>
+<body>   
+        <form action="/board/select" method="get">
+            <input type="text" title="txt" />
+            <input type="submit" value="검색" />
+        </form>
+
+        <a href="/board/select?no=1">제목별</a>
+            <table border="1">    
+                <tr>
+                    <th>번호</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>내용</th>
+                    <th>조회수</th>
+                    <th>날짜</th>
+                </tr>
+                    {% for one in abc %}
+                <tr>
+                    <td>{{ one.no }} </td>
+                    <td>{{ one.title }} </td>
+                    <td>{{ one.writer }} </td>
+                    <td>{{ one.content }} </td>
+                    <td>{{ one.hit }} </td>
+                    <td>{{ one.regdate }} </td>
+                </tr>
+                    {% endfor %}
+            </table>
+            {% for i in pages %}            
+            <a href="/board/list?page={{i}}&txt={{request.GET.txt}}"></a>
+            {% endfor %}     
+</body>
+</html>

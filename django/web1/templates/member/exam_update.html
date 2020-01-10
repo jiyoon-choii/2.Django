@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Update</title>
+</head>
+<body>
+    <h3>update</h3>
+    <hr />
+    <form action="/member/exam_update" method="post">
+        {% csrf_token %}
+        <table border="1">
+        {% for one in list %}
+            <tr>
+                <td>
+                    <input type="hidden" name="no"
+                        value = "{{ one.no }}" />
+                    <input type="text" name="name" 
+                        value="{{ one.name }}" />
+                </td>
+                <td>
+                    <input type="text" name="kor"
+                        value="{{ one.kor }}" />
+                </td>
+                <td>
+                    <input type="text" name="eng"
+                        value="{{ one.eng }}"/>
+                </td>
+                <td>
+                    <input type="text" name="math"
+                        value="{{ one.math }}"/>
+                </td>
+                <td>
+                    <input type="text" name="clas"
+                        value="{{ one.clas }}"/>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    <input type="submit" value="수정" />
+    </form>
+</body>
+</html>
